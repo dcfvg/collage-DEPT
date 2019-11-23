@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Aileron";
+  src: url("../fonts/Aileron-Regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../fonts/Aileron-Italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../fonts/Aileron-Bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("../fonts/Aileron-BoldItalic-webfont.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Junicode Condensed";
+  src: url("../fonts/Junicode-RegularCondensed-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Bold-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-BoldItalic-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Messapia";
+  src: url("../fonts/Messapia-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Messapia";
+  src: url("../fonts/Messapia-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
