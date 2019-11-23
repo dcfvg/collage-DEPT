@@ -1,13 +1,28 @@
 <template>
   <div id="app">
-    <CollageViewer></CollageViewer>
-    <SelectFlat></SelectFlat>
+    <div class="header">
+      <CollageViewer></CollageViewer>
+      <div class="">
+        <SelectFlat></SelectFlat>
+        <InterviewForm></InterviewForm>
+        <FlatInfo></FlatInfo>
+      </div>
+    </div>
+    <div class="bottom">
+      <CollageDiff></CollageDiff>
+      <Interview></Interview>
+    </div>
   </div>
 </template>
 
 <script>
 import SelectFlat from './components/SelectFlat.vue'
 import CollageViewer from './components/CollageViewer.vue'
+import CollageDiff from './components/CollageDiff.vue'
+import FlatInfo from './components/FlatInfo.vue'
+import InterviewForm from './components/InterviewForm.vue'
+import Interview from './components/Interview.vue'
+
 import state from './state.js'
 
 // const filesaver = require('file-saver');
@@ -16,6 +31,7 @@ const _ = require('lodash');
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 import './assets/css/fonts.css'
 import './assets/css/bootstrap-reboot.css'
+import './assets/css/print.css'
 
 import jsonFiltered from './assets/porto/dump-filtered.json'
 // import json from './assets/porto/dump.json'
@@ -63,18 +79,28 @@ export default {
 
   },
   components: {
-    SelectFlat, CollageViewer
+    SelectFlat, CollageViewer, CollageDiff, FlatInfo, InterviewForm, Interview
   }
 }
 </script>
 
 <style>
+
+
 #app {
   font-family: 'Aileron', Helvetica, Arial, sans-serif;
+}
+.header {
   display: flex;
 }
+.bottom {
+  padding-top: 40px;
+  display: flex;
+}
+
 .drag img {
   width: 100%;
   height: 100%;
 }
+
 </style>

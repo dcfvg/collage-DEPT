@@ -1,0 +1,19 @@
+@media print
+{
+  .no-print, .no-print *,
+  .handle, .handle *
+  {
+      display: none !important;
+  }
+
+  .vdr {
+    border: 10px solid white !important;
+  }
+
+  .bottom {
+    align-items:center;
+  }
+  body {
+    transform: scale(.95);
+  }
+}

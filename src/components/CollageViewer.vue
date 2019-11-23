@@ -1,9 +1,9 @@
 <template>
-  <div class="flat-background">
+  <div class="collage-viewer">
     <img class="flat-img" :src=flatImgUrl>
     <div id="cuts">
       <div v-for="item in state.cuts" v-bind:key="item.id">
-          <DraggableResizableCut :item=item ></DraggableResizableCut>
+          <DraggableResizableCut v-bind:item=item class="hop"></DraggableResizableCut>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
 import state from './../state.js'
 import DraggableResizableCut from './DraggableResizableCut.vue'
 export default {
-  name: 'SelectFlat',
+  name: 'CollageViewer',
   data: function(){ return {state} },
   computed: {
     flatImgUrl() {
@@ -39,5 +39,11 @@ export default {
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
+}
+.collage-viewer {
+  /* min-width: 1000px; */
+}
+.vdr {
+  border:none;
 }
 </style>

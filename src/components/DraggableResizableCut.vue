@@ -4,7 +4,6 @@
     :y=item.y
     :w=item.w
     :h=item.h
-    :lock-aspect-ratio="true"
     @dragstop="onDragStop"
     @resizestop="onResizeStop"
     >
