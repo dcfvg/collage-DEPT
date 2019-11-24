@@ -1,43 +1,61 @@
 <template>
-  <div id="app">
+  <div  id="app">
+
     <div class="header">
-      <CollageViewer></CollageViewer>
+      <CollageViewer ></CollageViewer>
       <div class="">
-        <SelectFlat></SelectFlat>
-        <InterviewForm></InterviewForm>
-        <FlatInfo></FlatInfo>
+        <Controls ></Controls>
+        <FlatInfo ></FlatInfo>
       </div>
     </div>
     <div class="bottom">
-      <CollageDiff></CollageDiff>
-      <Interview></Interview>
+      <CollageDiff ></CollageDiff>
+      <Interview ></Interview>
     </div>
+        <pre>{{ title }}</pre>
   </div>
 </template>
 
 <script>
-import SelectFlat from './components/SelectFlat.vue'
+import Controls from './components/Controls.vue'
 import CollageViewer from './components/CollageViewer.vue'
 import CollageDiff from './components/CollageDiff.vue'
 import FlatInfo from './components/FlatInfo.vue'
-import InterviewForm from './components/InterviewForm.vue'
 import Interview from './components/Interview.vue'
 
 import state from './state.js'
 
 // const filesaver = require('file-saver');
 const _ = require('lodash');
+const axios = require('axios');
 
 import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 import './assets/css/fonts.css'
 import './assets/css/bootstrap-reboot.css'
 import './assets/css/print.css'
 
-import jsonFiltered from './assets/porto/dump-filtered.json'
+// import jsonFiltered from './assets/porto/dump-filtered.json'
 // import json from './assets/porto/dump.json'
 
 export default {
   name: 'app',
+  data: function(){ return {state} },
+  mounted () {
+    axios
+      .get(process.env.BASE_URL+'porto/dump-filtered.json')
+      .then(response => {
+        console.log("r",response)
+        state.data.flats = response.data;
+        state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
+        state.flat = _.sample(state.data.flats).listing_id;
+        window.state = state;
+
+        document.title = 'collage (ready)';
+        //
+        // console.log(JSON.stringify(state.data.flats[0]));
+        // console.log(JSON.stringify(state.data.cuts[0]));
+      })
+  },
   created: function () {
     //
     // filtering JSON dump
@@ -72,14 +90,23 @@ export default {
     // var blob = new Blob([JSON.stringify(state.data.flats)], {type: "text/plain;charset=utf-8"});
     // filesaver.saveAs(blob, "dump.json", true);
 
-    state.data.flats = jsonFiltered;
-    state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
-    state.flat = _.sample(state.data.flats).listing_id;
-    window.state = state;
+    // state.data.flats = jsonFiltered;
+    // state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
+    // state.flat = _.sample(state.data.flats).listing_id;
+    // window.state = state;
 
   },
+  computed:{
+    hasData: function(){
+      return state.data.cuts > 1
+    },
+    title: function(){
+           document.title = 'collage '+state.name+' f-'+state.flat+' c-'+(state.cuts.length)+' '+(new Date().toLocaleString());
+      return document.title
+    }
+  },
   components: {
-    SelectFlat, CollageViewer, CollageDiff, FlatInfo, InterviewForm, Interview
+    Controls, CollageViewer, CollageDiff, FlatInfo, Interview
   }
 }
 </script>
@@ -101,6 +128,15 @@ export default {
 .drag img {
   width: 100%;
   height: 100%;
+}
+pre {
+  font-size: 9px;
+  /* transform-origin: bottom   left;
+  transform: rotate(90deg); */
+  position: absolute;
+  right: 0;
+  top: 0;
+
 }
 
 </style>

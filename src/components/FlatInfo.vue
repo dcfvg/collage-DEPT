@@ -7,7 +7,7 @@
       <P>UPTEC Baixa, Porto (PT)</P>
       <p>02.12–08.12.2019</P>
     </div> -->
-      <h3>Flat {{ f.listing_id }}</h3>
+      <h3>{{state.name}}<span v-if="state.name">,</span> flat {{ f.listing_id }}</h3>
 
       <p>
         {{ f.listing.bathrooms }} bathroom(s),

@@ -11,9 +11,16 @@
   }
 
   .bottom {
-    align-items:center;
+    /* align-items:center; */
   }
   body {
-    transform: scale(.95);
+    transform: scale(.98);
+  }
+
+  #CollageDiff #cuts {
+    align-content: flex-start;
+    transform-origin: top left;
+    width: 180%;
+    transform: scale(.5);
   }
 }

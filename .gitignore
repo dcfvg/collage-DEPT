@@ -2,6 +2,7 @@
 node_modules
 /dist
 src/assets/porto/
+public/porto/
 
 # local env files
 .env.local

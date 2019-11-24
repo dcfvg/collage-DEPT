@@ -33,7 +33,7 @@ h1 {
 .article {
   font-family: "Junicode";
   font-size: 14px;
-  column-count: 3;
+  column-count: 2;
 }
 
 </style>

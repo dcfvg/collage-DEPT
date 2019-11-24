@@ -1,5 +1,5 @@
 <template>
-  <div class="flat-background">
+  <div id="CollageDiff">
     <div id="cuts">
       <div  v-for="item in sortedCuts" v-bind:key="item.id">
         <div class="cutDiff">
@@ -69,15 +69,19 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  /* align-content: flex-start;
+  transform-origin: top left;
+  width: 200%;
+  transform: scale(.49); */
 }
 .cutDiff {
   /* display: flex; */
-  float: right;
-
-  margin: 0 10px 10px;
+  margin: 10px 10px;
     /* display: inline; */
-  /* transform-origin: top left;
-  transform: scale(.5); */
+
+   max-width: 50vw;
+  /* max-width: 33vw;
+  overflow: visible; */
 }
 .id {
   padding: 2px;
