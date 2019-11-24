@@ -32,8 +32,9 @@ h1 {
 }
 .article {
   font-family: "Junicode";
-  font-size: 14px;
-  column-count: 2;
+  font-size: 16px;
+  column-width: 25vw;
+  margin-right: 50px;
 }
 
 </style>

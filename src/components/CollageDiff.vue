@@ -4,6 +4,7 @@
       <div  v-for="item in sortedCuts" v-bind:key="item.id">
         <div class="cutDiff">
           <button class="no-print" v-on:click="removeCut(item.id)">X</button>
+
           <div class="off" :style="{
             backgroundImage: `url(${flatImgUrl})`,
             backgroundPosition: '-'+item.x+'px '+'-'+item.y+'px',
@@ -12,12 +13,17 @@
             width: item.w+'px'
           }"></div>
 
-          <img class="on"
-            :style="{ height: item.h+'px', width: item.w+'px'}"
-            :src="'http://dept-collage.dcfvg.fr/porto/crops/'+item.id+'.jpg'"
-          >
-          <p class="id">{{ item.id }}</p>
+          <div class="on" :style="{
+            backgroundImage: `url('http://dept-collage.dcfvg.fr/porto/crops/${item.id}.jpg')`,
+            backgroundRepeat:'no-repeat',
+            height: item.h+'px',
+            width: item.w+'px'
+          }"></div>
 
+          <div class="caption"
+            :style="{ width: item.w+'px'}">
+            <p><span>{{ item.class }}</span><br/>{{ item.id }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -42,7 +48,7 @@ export default {
       } else return "none";
     },
     sortedCuts(){
-      return _.sortBy(state.cuts,'w');
+      return _.sortBy(state.cuts,['w','h']);
     }
   },
   methods: {
@@ -55,12 +61,14 @@ export default {
 </script>
 
 <style scoped>
-
+#CollageDiff {
+  min-width: 15vw;
+}
 #cuts {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   /* align-content: flex-start;
   transform-origin: top left;
   width: 200%;
@@ -75,13 +83,22 @@ export default {
   /* max-width: 33vw;
   overflow: visible; */
 }
+.caption {
+  font-family: "Junicode Condensed";
+  line-height: 20px;
+  font-size: 18px;
+  word-wrap: break-word;
+  text-align: center;
+}
+.caption span {
+  font-weight: bold;
+}
+
 .id {
   padding: 2px;
   height: 30px;
   margin-right: -80px;
 
-  font-family: "Junicode Condensed";
-  font-size: 20px;
 /*
   transform-origin: top left;
   transform: rotate(90deg);

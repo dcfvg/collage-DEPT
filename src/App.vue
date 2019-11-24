@@ -31,7 +31,6 @@ import Interview from './components/Interview.vue'
 
 import state from './state.js'
 
-// const filesaver = require('file-saver');
 const _ = require('lodash');
 const axios = require('axios');
 
@@ -40,8 +39,6 @@ import './assets/css/fonts.css'
 import './assets/css/bootstrap-reboot.css'
 import './assets/css/print.css'
 
-// import jsonFiltered from './assets/porto/dump-filtered.json'
-// import json from './assets/porto/dump.json'
 
 export default {
   name: 'app',
@@ -50,35 +47,33 @@ export default {
     axios
       .get(process.env.BASE_URL+'porto/dump-filtered.json')
       .then(response => {
-        console.log("r",response)
         state.data.flats = response.data;
         state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
         state.flat = _.sample(state.data.flats).listing_id;
+
         window.state = state;
-
         document.title = 'collage (ready)';
-
         state.ui.hasData = true;
-        //
-        // console.log(JSON.stringify(state.data.flats[0]));
-        // console.log(JSON.stringify(state.data.cuts[0]));
       })
   },
   created: function () {
     //
     // filtering JSON dump
     //
-    // console.log(json);
+    // import json from './assets/porto/dump.json'
+
+    // console.log(json[0]);
     //
-    //
-    // state.data.flats = json.map((d) => {
+    // let filteredJSON = json.map((d) => {
     //   return {
     //     "id":d._id,
     //     "name":d.name,
     //     "listing_id":d.listing.listing_id,
     //     "listing":d.listing,
     //     "cuts_amount": d.cuts.length,
-    //     "cuts": d.cuts.map((t,i) => {
+    //     "cuts": d.cuts
+    //       .filter(c => c.score >= 0.85)
+    //       .map((t,i) => {
     //
     //       const id = d.listing.listing_id+"_"+i;
     //
@@ -87,21 +82,18 @@ export default {
     //         "x":t.bbox[0],
     //         "y":t.bbox[1],
     //         "w":t.bbox[2],
-    //         "h":t.bbox[3]
+    //         "h":t.bbox[3],
+    //         "class":t.class
     //       }
     //     })
     //   }
     // })
     //
-    // console.log(state.data.flats)
+    // console.log(filteredJSON[0])
     //
-    // var blob = new Blob([JSON.stringify(state.data.flats)], {type: "text/plain;charset=utf-8"});
-    // filesaver.saveAs(blob, "dump.json", true);
-
-    // state.data.flats = jsonFiltered;
-    // state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
-    // state.flat = _.sample(state.data.flats).listing_id;
-    // window.state = state;
+    // const filesaver = require('file-saver');
+    // var blob = new Blob([JSON.stringify(filteredJSON)], {type: "text/plain;charset=utf-8"});
+    // filesaver.saveAs(blob, "dump-filtered.json", true);
 
   },
   computed:{
