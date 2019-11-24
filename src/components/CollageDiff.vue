@@ -3,25 +3,21 @@
     <div id="cuts">
       <div  v-for="item in sortedCuts" v-bind:key="item.id">
         <div class="cutDiff">
-        <button class="no-print" v-on:click="removeCut(item.id)">X</button>
-        <div class="off"
-          :style="{
-            backgroundImage: 'url(' + flatImgUrl + ')',
+          <button class="no-print" v-on:click="removeCut(item.id)">X</button>
+          <div class="off" :style="{
+            backgroundImage: `url(${flatImgUrl})`,
             backgroundPosition: '-'+item.x+'px '+'-'+item.y+'px',
             backgroundRepeat:'no-repeat',
             height: item.h+'px',
             width: item.w+'px'
-            }">
+          }"></div>
 
-        </div>
-        <img class="on"
-        :style="{
-          height: item.h+'px',
-          width: item.w+'px'
-          }"
-        :src="'http://localhost:8080/crops/'+item.id+'.jpg'"
-        >
-        <p class="id">{{ item.id }}</p>
+          <img class="on"
+            :style="{ height: item.h+'px', width: item.w+'px'}"
+            :src="'http://dept-collage.dcfvg.fr/porto/crops/'+item.id+'.jpg'"
+          >
+          <p class="id">{{ item.id }}</p>
+
         </div>
       </div>
     </div>
@@ -37,11 +33,13 @@ export default {
   data: function(){ return {state} },
   computed: {
     flatImgUrl() {
-      var found = state.data.flats.find(function(element) {
-        return element.listing_id == state.flat;
-      })
-      if (typeof found !== 'undefined') return "http://localhost:8080/flats/"+found.name;
-      else return "none";
+      var found = state.data.flats.find(e => e.listing_id == state.flat)
+      // console.log(state.ui.tileServer);
+      // const urlprefix = state.ui.tileServer+"/flats/";
+
+      if (!_.isUndefined(found)){
+        return 'http://dept-collage.dcfvg.fr/porto/flats/'+found.name
+      } else return "none";
     },
     sortedCuts(){
       return _.sortBy(state.cuts,'w');
@@ -57,13 +55,7 @@ export default {
 </script>
 
 <style scoped>
-img {
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-}
+
 #cuts {
   margin-top: 10px;
   display: flex;

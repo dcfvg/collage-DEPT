@@ -6,12 +6,12 @@
 
     </div>
     <div class="line">
-      <textarea placeholder="text from interview" v-model=state.interview id="story" name="story" ></textarea>
+      <textarea placeholder="Transcription" v-model=state.interview id="story" name="story" ></textarea>
     </div>
     <div class="line">
       <button v-on:click="addObject">add object</button>
       <button v-on:click="randomObjects">random object</button>
-      <button  v-on:click="saveStateJSON">export state</button>
+      <button  v-on:click="saveStateJSON">export</button>
       <input type="file" @change="onFileChange" title="load state">    </div>
   </div>
 </template>
@@ -27,20 +27,24 @@ export default {
   methods: {
    addObject: function () {
      let cutId = prompt("What is the object id ?");
-     let newCut = state.data.cuts.find((e) => {return e.id == cutId });
+     let newCut = state.data.cuts.find(e => e.id == cutId);
 
      if(_.isUndefined(newCut)) alert("Object not found! Please retry with a correct ID.");
      else state.cuts.push(newCut);
    },
-   randomObjects: () => {
-     state.cuts.push(_.sample(state.data.cuts));
-   },
+   randomObjects: () => { state.cuts.push(_.sample(state.data.cuts)) },
    saveStateJSON: () => {
-     let stateExport = state;
+
+     document.title = 'collage '+state.name+' f-'+state.flat+' c-'+(state.cuts.length)+' '+(new Date().toLocaleString());
+
+     var stateExport = _.cloneDeep(state);
+
      stateExport.data.flats = [];
      stateExport.data.cuts = [];
+
      let blob = new Blob([JSON.stringify(stateExport)], {type: "text/plain;charset=utf-8"});
      filesaver.saveAs(blob, document.title+".json", true);
+
    },
    onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -51,13 +55,11 @@ export default {
 
       reader.onload = () => {
         let newState = JSON.parse(reader.result);
-        state.name = newState.name;
-        state.cuts = newState.cuts;
+        state.name      = newState.name;
+        state.cuts      = newState.cuts;
+        state.flat      = newState.flat;
         state.interview = newState.interview;
-        state.keepRatio = newState.keepRatio;
-        state.diffImgScale = newState.diffImgScale;
-        state.flat = newState.flat;
-        state.cuts = newState.cuts;
+        state.ui        = newState.ui;
       }
       reader.readAsText(file, 'UTF-8');
     }

@@ -25,6 +25,7 @@
 
 <script>
 import state from './../state.js'
+
 export default {
   name: 'FlatInfo',
   data: function(){ return {state} },

@@ -1,8 +1,6 @@
 <template>
   <div class="Interview no-print">
-    <textarea v-model=state.interview id="story" name="story" >
-    It was a dark and stormy night...
-    </textarea>
+    <textarea v-model=state.interview id="story" name="story" ></textarea>
   </div>
 </template>
 

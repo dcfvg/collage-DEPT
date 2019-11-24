@@ -3,7 +3,7 @@
     <img class="flat-img" :src=flatImgUrl>
     <div id="cuts">
       <div v-for="item in state.cuts" v-bind:key="item.id">
-          <DraggableResizableCut v-bind:item=item class="hop"></DraggableResizableCut>
+        <DraggableResizableCut v-bind:item=item class="draggable"></DraggableResizableCut>
       </div>
     </div>
   </div>
@@ -17,12 +17,8 @@ export default {
   data: function(){ return {state} },
   computed: {
     flatImgUrl() {
-      var found = state.data.flats.find(function(element) {
-        return element.listing_id == state.flat;
-      })
-      console.log(found);
-
-      if (typeof found !== 'undefined') return "http://localhost:8080/flats/"+found.name;
+      var found = state.data.flats.find(e => e.listing_id == state.flat)
+      if (typeof found !== 'undefined') return "http://dept-collage.dcfvg.fr/porto/flats/"+found.name;
       else return "none";
     }
   },
@@ -39,8 +35,10 @@ export default {
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
+
 }
 .collage-viewer {
+  /* min-width: 25vw; */
   /* min-width: 1000px; */
 }
 .vdr {

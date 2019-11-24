@@ -7,7 +7,7 @@
     @dragstop="onDragStop"
     @resizestop="onResizeStop"
     >
-      <img :src="'http://localhost:8080/crops/'+item.id+'.jpg'">
+      <img :src="'http://dept-collage.dcfvg.fr/porto/crops/'+item.id+'.jpg'">
     </vue-draggable-resizable>
 </template>
 
@@ -23,12 +23,12 @@ export default {
   },
   methods: {
     onResizeStop: function (x,y,w,h) {
-      let cutIndex = state.cuts.findIndex((e) => {return e.id == this.$props.item.id });
+      let cutIndex = state.cuts.findIndex(e => e.id == this.$props.item.id )
       state.cuts[cutIndex].w = w
       state.cuts[cutIndex].h = h
     },
     onDragStop: function (x,y) {
-      let cutIndex = state.cuts.findIndex((e) => {return e.id == this.$props.item.id });
+      let cutIndex = state.cuts.findIndex(e => e.id == this.$props.item.id )
       state.cuts[cutIndex].x = x
       state.cuts[cutIndex].y = y
     }

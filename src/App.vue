@@ -1,18 +1,24 @@
 <template>
-  <div  id="app">
+  <div id="app" >
 
-    <div class="header">
-      <CollageViewer ></CollageViewer>
-      <div class="">
-        <Controls ></Controls>
-        <FlatInfo ></FlatInfo>
-      </div>
+    <div class="loading" v-if="!state.ui.hasData">DEPT. (loading data …)</div>
+
+    <div class="main" v-if="state.ui.hasData">
+          <div class="header">
+            <CollageViewer ></CollageViewer>
+            <div class="">
+              <Controls ></Controls>
+              <FlatInfo ></FlatInfo>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <CollageDiff ></CollageDiff>
+            <Interview ></Interview>
+          </div>
+          <pre>{{ title }}</pre>
     </div>
-    <div class="bottom">
-      <CollageDiff ></CollageDiff>
-      <Interview ></Interview>
-    </div>
-        <pre>{{ title }}</pre>
+
   </div>
 </template>
 
@@ -51,6 +57,8 @@ export default {
         window.state = state;
 
         document.title = 'collage (ready)';
+
+        state.ui.hasData = true;
         //
         // console.log(JSON.stringify(state.data.flats[0]));
         // console.log(JSON.stringify(state.data.cuts[0]));
@@ -97,9 +105,6 @@ export default {
 
   },
   computed:{
-    hasData: function(){
-      return state.data.cuts > 1
-    },
     title: function(){
            document.title = 'collage '+state.name+' f-'+state.flat+' c-'+(state.cuts.length)+' '+(new Date().toLocaleString());
       return document.title
@@ -116,6 +121,13 @@ export default {
 
 #app {
   font-family: 'Aileron', Helvetica, Arial, sans-serif;
+}
+.loading {
+  font-family: Messapia;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20pt;
+  margin-top: 25vh;
 }
 .header {
   display: flex;
@@ -139,4 +151,11 @@ pre {
 
 }
 
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 </style>
