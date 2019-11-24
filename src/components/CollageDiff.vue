@@ -85,13 +85,14 @@ export default {
 }
 .caption {
   font-family: "Junicode Condensed";
-  line-height: 20px;
-  font-size: 18px;
+  line-height: 29px;
+  font-size: 24px;
   word-wrap: break-word;
   text-align: center;
 }
 .caption span {
   font-weight: bold;
+  word-wrap: normal;
 }
 
 .id {

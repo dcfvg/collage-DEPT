@@ -135,10 +135,11 @@ export default {
 }
 pre {
   font-size: 9px;
+  padding: 10px;
   /* transform-origin: bottom   left;
   transform: rotate(90deg); */
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 0;
 
 }
