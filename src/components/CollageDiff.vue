@@ -5,7 +5,7 @@
         <div class="cutDiff">
           <button class="no-print" v-on:click="removeCut(item.id)">X</button>
 
-          <div class="off" :style="{
+          <div class="covered" :style="{
             backgroundImage: `url(${flatImgUrl})`,
             backgroundPosition: '-'+item.x+'px '+'-'+item.y+'px',
             backgroundRepeat:'no-repeat',
@@ -13,7 +13,7 @@
             width: item.w+'px'
           }"></div>
 
-          <div class="on" :style="{
+          <div class="cover" :style="{
             backgroundImage: `url('http://dept-collage.dcfvg.fr/porto/crops/${item.id}.jpg')`,
             backgroundRepeat:'no-repeat',
             height: item.h+'px',
@@ -76,7 +76,7 @@ export default {
 }
 .cutDiff {
   /* display: flex; */
-  margin: 10px 10px;
+  margin: 15px 15px;
     /* display: inline; */
 
    max-width: 50vw;
@@ -99,11 +99,16 @@ export default {
   padding: 2px;
   height: 30px;
   margin-right: -80px;
+}
 
-/*
-  transform-origin: top left;
-  transform: rotate(90deg);
-  background-color: white; */
+.cover {
+  position: relative;
+  top: -10px;
+}
+.covered {
+  position: relative;
+  top: 20px;
+  left: -20px;
 }
 
 </style>
