@@ -5,6 +5,9 @@
   {
       display: none !important;
   }
+  .in-print {
+    display: block  !important;
+  }
 
   .vdr {
     border: 10px solid white !important;

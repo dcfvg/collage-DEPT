@@ -44,12 +44,22 @@ export default {
   name: 'app',
   data: function(){ return {state} },
   mounted () {
+
+    console.log(location.hash);
+
     axios
       .get(process.env.BASE_URL+'porto/dump-filtered.json')
       .then(response => {
         state.data.flats = response.data;
         state.data.cuts = _.flatten(state.data.flats.map((d) => {return d.cuts}));
-        state.flat = _.sample(state.data.flats).listing_id;
+
+        let hash = parseInt(location.hash.replace("#", ""));
+        var found = state.data.flats.find(e => e.listing_id == hash)
+
+        if(_.isUndefined(found)){
+          state.flat = _.sample(state.data.flats).listing_id;
+          location.hash = state.flat;
+        } else state.flat = hash;
 
         window.state = state;
         document.title = 'collage (ready)';
@@ -110,7 +120,9 @@ export default {
 
 <style>
 
-
+.in-print {
+  display: none;
+}
 #app {
   font-family: 'Aileron', Helvetica, Arial, sans-serif;
 }
