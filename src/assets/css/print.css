@@ -3,11 +3,12 @@
   .no-print, .no-print *,
   .handle, .handle *
   {
-      display: none !important;
+    display: none !important;
   }
   .in-print {
     display: block  !important;
   }
+
 
   .vdr {
     border: 10px solid white !important;
@@ -19,13 +20,21 @@
   body {
     /* transform: scale(.98); */
     margin: 10px;
-    zoom: 60%
+    /* zoom: 70% */
   }
 
-  #CollageDiff #cuts {
+  #CollageDiff {
     align-content: flex-start;
     transform-origin: top left;
-    width: 180%;
-    transform: scale(.5);
+
+    width: 200%;
+    transform: scale(calc(1/2));
+    font-size: calc(18px * 2);
+    height: 200px;
+    page-break-after: always;
+  }
+  .infos {
+    background-color: white;
+    z-index: 10000  !important;
   }
 }

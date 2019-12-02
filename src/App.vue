@@ -6,17 +6,17 @@
     <div class="main" v-if="state.ui.hasData">
           <div class="header">
             <CollageViewer ></CollageViewer>
-            <div class="">
-              <Controls ></Controls>
-              <FlatInfo ></FlatInfo>
-            </div>
+            <Controls ></Controls>
+          </div>
+          <div class="CollageDiff">
+            <pre>{{ title }}</pre>
+            <CollageDiff ></CollageDiff>
           </div>
 
           <div class="bottom">
-            <CollageDiff ></CollageDiff>
+            <FlatInfo ></FlatInfo>
             <Interview ></Interview>
           </div>
-          <pre>{{ title }}</pre>
     </div>
 
   </div>
@@ -38,6 +38,8 @@ import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 import './assets/css/fonts.css'
 import './assets/css/bootstrap-reboot.css'
 import './assets/css/print.css'
+
+// import json from './assets/porto/dump.json'
 
 
 export default {
@@ -69,11 +71,11 @@ export default {
   created: function () {
     //
     // filtering JSON dump
-    //
     // import json from './assets/porto/dump.json'
+    //
 
     // console.log(json[0]);
-    //
+    // //
     // let filteredJSON = json.map((d) => {
     //   return {
     //     "id":d._id,
@@ -93,7 +95,7 @@ export default {
     //         "y":t.bbox[1],
     //         "w":t.bbox[2],
     //         "h":t.bbox[3],
-    //         "class":t.class
+    //         "class":t.subject
     //       }
     //     })
     //   }
@@ -136,24 +138,24 @@ export default {
 .header {
   display: flex;
 }
-.bottom {
-  padding-top: 40px;
-  display: flex;
-}
 
 .drag img {
   width: 100%;
   height: 100%;
 }
 pre {
-  font-size: 9px;
-  padding: 10px;
-  /* transform-origin: bottom   left;
-  transform: rotate(90deg); */
-  position: absolute;
-  right: 10px;
+  padding: 4px;
+  font-size: 14px;
+  text-align: center;
+  /* padding: 10px; */
+  /* height: 10px; */
+  /* right: 0;
   top: 0;
+  position: absolute;
+  display: block;
 
+  transform-origin: bottom left;
+  transform: rotate(90deg); */
 }
 
 img {
@@ -163,4 +165,5 @@ img {
   -o-user-drag: none;
   user-drag: none;
 }
+
 </style>

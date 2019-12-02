@@ -11,7 +11,7 @@ const state = {
     diffImgScale:2,
     hasData:false
   },
-  interview: "# Transcription",
+  interview: "1. item \n2. item \n3. item",
   flat:0,
   cuts:[]
 }

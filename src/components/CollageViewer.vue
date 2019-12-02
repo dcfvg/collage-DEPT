@@ -44,4 +44,5 @@ export default {
 .vdr {
   border:none;
 }
+
 </style>

@@ -1,36 +1,23 @@
 <template>
   <div class="infos">
 
-    <h1>DEPT.</h1>
-    <!-- <H2>IN HERE</H2> -->
-    <!-- <div class="title">
-      <P>UPTEC Baixa, Porto (PT)</P>
-      <p>02.12–08.12.2019</P>
-    </div> -->
-      <h3>{{state.name}}<span v-if="state.name">, </span> {{ f.listing.property }}, {{ f.listing.room_type }} ({{ f.listing_id }})</h3>
+
+
+      <h3>{{state.name}}<span v-if="state.name"> • </span> {{ f.listing.property }}, {{ f.listing.room_type }}</h3>
       <p class="metadata">
         {{ f.listing.bathrooms }} bathroom(s) •
         {{ f.listing.bedrooms }} bedroom(s) •
         {{ f.listing.beds }} bed(s) •
-        {{ f.listing.final_price }} €</p>
+        {{ f.listing.final_price }} €
+      </p>
 
-      <div class="entities in-print">
+      <div class="info-header">
 
-        <h4>tags</h4>
-          <ul>
-            <li v-for="(item, index) in f.listing.entities" v-bind:key='index'>
-            {{ item }}
-          </li>
-        </ul>
-        <h4>objects detected</h4>
-        <ul class="amenities">
-          <li v-for="(item, index) in f.listing.amenities" v-bind:key='index'>
-            {{ item }}
-          </li>
-        </ul>
+        <h1>DEPT.</h1>
+        <H2>IN HERE</H2>
+        <P>UPTEC Baixa, Porto (PT), 02.12–08.12.2019</P>
 
       </div>
-
   </div>
 </template>
 
@@ -58,8 +45,16 @@ export default {
 h1 {
   font-family: "Messapia";
   font-weight: bold;
+  margin-right: 2em;
 }
-
+.info-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .title {
   display: flex;
   justify-content: space-between;
