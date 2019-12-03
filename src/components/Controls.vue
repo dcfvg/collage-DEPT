@@ -35,6 +35,11 @@ export default {
    randomObjects: () => { state.cuts.push(_.sample(state.data.cuts)) },
    saveStateJSON: () => {
 
+     if(_.isUndefined(state.name)){
+       let name = prompt("What is the name of the interviewee ?");
+       state.name = name;
+     }
+     console.log(state.name);
      document.title = 'collage '+state.name+' f-'+state.flat+' c-'+(state.cuts.length)+' '+(new Date().toLocaleString());
 
      var stateExport = _.cloneDeep(state);
@@ -44,7 +49,6 @@ export default {
 
      let blob = new Blob([JSON.stringify(stateExport)], {type: "text/plain;charset=utf-8"});
      filesaver.saveAs(blob, document.title+".json", true);
-
    },
    onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
