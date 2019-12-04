@@ -4,12 +4,16 @@
     <div class="loading" v-if="!state.ui.hasData">DEPT. (loading data …)</div>
 
     <div class="main" v-if="state.ui.hasData">
+
           <div class="header">
             <CollageViewer ></CollageViewer>
             <Controls ></Controls>
           </div>
+
           <div class="CollageDiff">
-            <pre>{{ title }}</pre>
+            <!-- <pre>{{ title }}</pre> -->
+            <p class="caption">{{ state.name }} • F_{{ state.flat }}</p>
+
             <CollageDiff ></CollageDiff>
           </div>
 
@@ -143,9 +147,18 @@ export default {
   width: 100%;
   height: 100%;
 }
+.caption {
+
+  margin-top: 5px;
+
+  font-family: "Junicode";
+  font-size: 16px;
+  /* text-align: center; */
+
+}
 pre {
   padding: 4px;
-  font-size: 14px;
+  font-size: 10px;
   text-align: center;
   /* padding: 10px; */
   /* height: 10px; */

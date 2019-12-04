@@ -1,23 +1,21 @@
 <template>
   <div class="infos">
-
-
-
-      <h3>{{state.name}}<span v-if="state.name"> • </span> {{ f.listing.property }}, {{ f.listing.room_type }}</h3>
+      <h3>{{state.name}}</h3>
+      <!-- <h3>{{state.name}}<span v-if="state.name"> • </span> {{ f.listing.property }}, {{ f.listing.room_type }}</h3>
       <p class="metadata">
         {{ f.listing.bathrooms }} bathroom(s) •
         {{ f.listing.bedrooms }} bedroom(s) •
         {{ f.listing.beds }} bed(s) •
         {{ f.listing.final_price }} €
-      </p>
+      </p> -->
 
-      <div class="info-header">
+      <!-- <div class="info-header">
 
         <h1>DEPT.</h1>
         <H2>IN HERE</H2>
         <P>UPTEC Baixa, Porto (PT), 02.12–08.12.2019</P>
 
-      </div>
+      </div> -->
   </div>
 </template>
 

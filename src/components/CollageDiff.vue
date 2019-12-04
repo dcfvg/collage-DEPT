@@ -3,7 +3,6 @@
     <div id="cuts">
       <div  v-for="(item) in sortedCuts" v-bind:key="item.id">
         <div class="cutDiff">
-          <p> </p>
           <!-- <button class="no-print" v-on:click="removeCut(item.id)">X</button> -->
           <div class="covered" :style="{
             backgroundImage: `url(${flatImgUrl})`,
@@ -26,7 +25,7 @@
 
                 state.cuts.findIndex(e => e.id == item.id )+1
 
-              ) }}</span> <span>{{ item.class }}</span> {{ item.id }}</p>
+              ) }}</span><br/><span>{{ item.class }}</span> <br/>{{ item.id }}</p>
           </div>
         </div>
       </div>
@@ -68,11 +67,24 @@ export default {
 
 <style scoped>
 
+#CollageDiff {
+  align-content: flex-start;
+  transform-origin: top left;
+
+  width: 200%;
+  transform: scale(calc(1/2));
+  font-size: calc(18px * 2);
+  height: 200px;
+
+  page-break-after: always;
+}
+
 #cuts {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: flex-end;
 }
 .cutDiff {
    margin-right: 30px;
@@ -103,7 +115,7 @@ export default {
 }
 .covered {
   position: relative;
-  margintop: 20px;
+  margin-top: 20px;
   left: -20px;
 }
 .index {
@@ -111,6 +123,7 @@ export default {
   border: 1px solid black;
   border-radius: 100px;
   padding-top: 2px;
+  margin-bottom: 15px;
   width: 1.25em;
   height: 1.25em;
   display: inline-block;

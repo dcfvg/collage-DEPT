@@ -1,5 +1,6 @@
 <template>
   <div class="article">
+    <h2>{{state.name}}</h2>
     <div v-html="compiledMarkdown"></div>
   </div>
 </template>
@@ -24,17 +25,24 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 
-h1 {
+h2 {
+  padding-bottom: 2em;
+}
+.article h1 {
   font-family: Messapia;
   font-weight: bold;
+  font-size: 16px;
 }
 .article {
   font-family: "Junicode";
-  font-size: 18px;
-  column-width: 50vw;
-  margin-right: 50px;
+  text-align: justify;
+  font-size: 16px;
+  /* column-width: 50vw;
+   */
+  margin: 1vw;
+  padding-left: 45vw;
 }
 
 </style>

@@ -64,6 +64,9 @@ export default {
         state.flat      = newState.flat;
         state.interview = newState.interview;
         state.ui        = newState.ui;
+
+        document.title = 'collage '+state.name+' f-'+state.flat+' c-'+(state.cuts.length)+' '+(new Date().toLocaleString());
+
       }
       reader.readAsText(file, 'UTF-8');
     }

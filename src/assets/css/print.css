@@ -18,23 +18,14 @@
     /* align-items:center; */
   }
   body {
-    /* transform: scale(.98); */
-    margin: 10px;
-    /* zoom: 70% */
   }
 
-  #CollageDiff {
-    align-content: flex-start;
-    transform-origin: top left;
-
-    width: 200%;
-    transform: scale(calc(1/2));
-    font-size: calc(18px * 2);
-    height: 200px;
-    page-break-after: always;
-  }
   .infos {
     background-color: white;
-    z-index: 10000  !important;
+  }
+  .article {
+  }
+  .bottom {
+    display: none;
   }
 }
